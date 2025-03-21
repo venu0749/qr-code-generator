@@ -1,0 +1,98 @@
+<html>
+    <head>
+        <h1>
+            QR CODE GENERATOR
+        </h1>
+        <style>
+            *{
+                padding:0;
+                margin:0;
+                background-color: rgb(71, 71, 71);
+            }
+            body{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                font-family: Arial, sans-serif;
+            }
+            .conatiner{
+                width:400px;
+                padding:25px;
+                position: absolute;
+                top:50%;
+                border-radius: 10px;
+            }
+            .container b{
+                font-weight: 600;
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+            .container input{
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 10px;
+                border: 1px solid rgba(255, 255, 255, 0.) transparent;
+                border-radius: 10px;
+                font-size: 16px;
+            }
+            .container button{
+                width: 100%;
+                padding: 10px;
+                background-color: #4227bb;
+                color: white;
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+                margin-bottom: 20px;
+                transition: background-color 0.3s ease;
+                font-weight: 500;
+            }
+            #imgbox{
+                width: 150px;
+               max-height: 0;
+                border-radius: 5px;
+                overflow: hidden;
+                margin-bottom: 20px;
+                max-height: 0;
+                display: none;
+                transition: max-height 1s;
+            }
+            #imgbox img{
+                width: 100%;
+            }
+            #imgbox.showimg{
+                max-height: 300px;
+                margin: 10px auto;
+                border: 1px solid ;
+                display: block;
+            }
+
+        </style>    
+        </head>
+    <body>
+         <div class="container">
+            <b>
+                enter your text or URL
+            </b>
+            <input type="text" id="qrtext" placeholder="text or URL">
+            <div id="imgbox" >
+                <img src= " " id= "qrimage">
+            </div>
+            <button onclick= "generateqr()"> generate QR code</button>
+         </div>
+    <script type="text/javascript">
+        let qrtext = document.getElementById("qrtext");
+        let qrimage = document.getElementById("qrimage");
+        let imgbox = document.getElementById("imgbox");
+
+        function generateqr() {
+    
+        qrimage.src= "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + qrtext.value;
+        imgbox.classList.add("showimg");
+         
+    }
+        </script>
+        
+    </body>
+</html>
